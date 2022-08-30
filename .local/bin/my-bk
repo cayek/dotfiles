@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+HOST=$(hostname)
+bk ()
+{
+    rsync -avz --delete \
+        "${1}" "bk:/mnt/red/Backup/${HOST}/"
+    echo `date` ": ${1} ok" | ssh bk -T "cat >> /mnt/red/Backup/${HOST}.log"
+}
+
+bk ~/.Private
+bk ~/cipher
