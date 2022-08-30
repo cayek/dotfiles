@@ -1,0 +1,5 @@
+bootstrap 
+
+git submodule init 
+stow 
+my-init

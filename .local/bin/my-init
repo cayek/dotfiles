@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+import os
+import shutil
+from pathlib import Path
+
+HOME_DIR = Path("~/").expanduser()
+
+# TODO test if apt on ubuntu and install deps: git zsh stow htop
+
+# TODO build emacs 
+
+# TODO 
+
+# init doom emacs
+if (HOME_DIR / ".config/emacs/bin/doom").exists():
+    # TODO find a way to detect uninstall doom 
+    cmd = f"{HOME_DIR / '.config/emacs/bin/doom'} up"
+    os.system(cmd)
+else:
+    # TODO remove because submodule
+    # cmd = 'git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs'
+    # os.system(cmd)
+    cmd = '~/.config/emacs/bin/doom install'
+    os.system(cmd)
