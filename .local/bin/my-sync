@@ -31,3 +31,5 @@ else
   info "repo not clean"
   emacsclient -e "(magit-status)"
 fi
+
+git push
