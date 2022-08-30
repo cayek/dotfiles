@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+import os
+import shutil
+from pathlib import Path
+
+HOME_DIR = Path("~/").expanduser()
+# mount plain
+if not (HOME_DIR / "plain/sync").exists():
+    cmd = f"gocryptfs cipher plain"
+    os.system(cmd)
+
+# enable syncthing
+cmd = f"systemctl --user start syncthing.service  "
+os.system(cmd)
+
+#
