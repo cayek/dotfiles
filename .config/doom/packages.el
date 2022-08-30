@@ -1,0 +1,6 @@
+(let* ((dir "~/.config/doom/packages.d")
+      (files (directory-files dir nil ".*\\.el")))
+  (dolist (file files)
+    (load-file (expand-file-name file dir))
+    )
+  )

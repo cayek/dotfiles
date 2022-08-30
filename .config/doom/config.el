@@ -50,8 +50,9 @@
 ;; they are implemented.
 
 
-;; windows
-(define-key evil-window-map (kbd "<right>") 'evil-window-right)
-(define-key evil-window-map (kbd  "<left>") 'evil-window-left)
-(define-key evil-window-map (kbd "<up>") 'evil-window-up)
-(define-key evil-window-map (kbd "<down>") 'evil-window-down)
+(let* ((dir "~/.config/doom/config.d/")
+      (files (directory-files dir nil ".*\\.el")))
+  (dolist (file files)
+    (load-file (expand-file-name file dir))
+    )
+  )

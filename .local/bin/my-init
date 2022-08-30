@@ -9,7 +9,8 @@ HOME_DIR = Path("~/").expanduser()
 
 # TODO build emacs 
 
-# TODO 
+# TODO update
+os.system("sudo apt update; sudo apt upgrade -y; sudo apt autoremove")
 
 # init doom emacs
 if (HOME_DIR / ".config/emacs/bin/doom").exists():
