@@ -2,3 +2,32 @@
 
 cd ~/plain
 ./sync
+
+section "Syncing dotfiles"
+cd ~/dotfiles2 # TODO move to dotfiles
+RED='\033[0;31m\033[1m'
+GREEN='\033[0;32m\033[1m'
+YELLOW='\033[0;33m\033[1m'
+BOLD='\033[0m\033[1m'
+NORMAL='\033[0m'
+
+section() {
+    printf "${GREEN}==> $@${NORMAL}\n"
+}
+message() {
+    printf "${YELLOW}:: $@${NORMAL}\n"
+}
+info() {
+    printf "${BOLD}$@${NORMAL}\n"
+}
+warning() {
+    printf "${YELLOW}WARNING:: $@${NORMAL}\n"
+}
+
+if [ -z "$(git status --porcelain)" ]; then
+  # Working directory clean
+  info "repo is clean"
+else
+  info "repo not clean"
+  emacsclient -e "(magit-status)"
+fi
