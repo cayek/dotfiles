@@ -56,3 +56,5 @@
     (load-file (expand-file-name file dir))
     )
   )
+
+(load-file (expand-file-name "~/plain/config.el"))
