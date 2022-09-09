@@ -10,5 +10,5 @@ WORKSPACE=$(get_workspaces)
 
 if [ -n "${WORKSPACE}" ]
 then
-    emacsclient -c -e "(+workspace/switch-to \"${WORKSPACE}\")"
+    emacsclient -c -F "((name . \"${WORKSPACE}\"))"
 fi
