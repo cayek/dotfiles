@@ -4,7 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((org-use-tag-inheritance . t)
+   '((diff-add-log-use-relative-names . t)
+     (vc-git-annotate-switches . "-w")
+     (org-use-tag-inheritance . t)
      (ispell-dictionary . "fr")
      (org-attach-use-inheritance . t)
      (org-attach-use-inheritance)
