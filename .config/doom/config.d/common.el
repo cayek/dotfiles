@@ -434,8 +434,6 @@ clocked tasks in minutes."
 (setq-default flycheck-disabled-checkers '(c/c++-gcc ))
 
 (after! elfeed
-  (setq rmh-elfeed-org-files '("~/plain/perso/feeds/elfeed.org"))
-  (setq elfeed-db-directory "~/~/plain/perso/feeds/.elfeed/")
   ;; (require 'feed-setup)
   (setq elfeed-goodies/tag-column-width 25)
 
