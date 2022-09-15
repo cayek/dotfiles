@@ -4,6 +4,7 @@ import shutil
 from pathlib import Path
 
 HOME_DIR = Path("~/").expanduser()
+
 # mount plain
 if not (HOME_DIR / "plain/sync").exists():
     cmd = f"gocryptfs cipher plain"
@@ -13,4 +14,13 @@ if not (HOME_DIR / "plain/sync").exists():
 cmd = f"systemctl --user start syncthing.service  "
 os.system(cmd)
 
-#
+# start emacs deamon
+cmd = f"emacsclient -ca false -e '(delete-frame)'"
+if os.system(cmd) != 0:
+    os.system("emacs --deamon")
+
+# TODO start gpg agent ? add keys
+
+# sync
+if (HOME_DIR / "plain/sync").exists():
+    os.system("mysync")
