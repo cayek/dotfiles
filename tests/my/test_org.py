@@ -37,7 +37,9 @@ def test_orgparse():
 
 def test_get_today_time_sumup(self):
     self = Org()
-    Org().print_month_time_sumup()
-
-    date = "2022-06"
+    self.print_month_time_sumup()
+    self.print_today_time_sumup()
+    date = "2022-06-22"
     Org().get_date_time_sumup(date)
+
+    self.get_date_time_sumup("2022-09-22")
