@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+import fire
+from my.org import Org
+
+class Main(object):
+
+    def __init__(self):
+        self.org = Org()
+
+if __name__ == '__main__':
+    fire.Fire(Main)

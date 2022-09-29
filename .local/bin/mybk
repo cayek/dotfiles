@@ -9,7 +9,7 @@ testssh () {
 bk ()
 {
     if testssh bk; then
-        rsync -avzL --delete \
+        rsync -avzL --info=progress2 --delete \
             "${1}" "bk:/mnt/red/Backup/${HOST}/"
         echo `date` ": ${1} ok" | ssh bk -T "cat >> /mnt/red/Backup/${HOST}.log"
     fi

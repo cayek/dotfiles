@@ -17,7 +17,7 @@ os.system(cmd)
 # start emacs deamon
 cmd = f"emacsclient -ca false -e '(delete-frame)'"
 if os.system(cmd) != 0:
-    os.system("emacs --deamon")
+    os.system("emacs --daemon")
 
 # TODO start gpg agent ? add keys
 

@@ -1,1 +1,9 @@
 .git
+src
+venv
+Makefile
+setup.py
+README.org
+requirements.txt
+requirements.dev.txt
+setup.cfg

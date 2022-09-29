@@ -1,0 +1,15 @@
+#+TITLE: Test cpp setup
+
+Create compile_commands.json
+
+#+begin_src shell
+cmake -H. -BDebug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
+ln -s Debug/compile_commands.json .
+#+end_src
+
+Debug with gdb (spc o d and toggle breakpoint with C-c spc)
+#+begin_src text
+b main // breakpoint at first line
+r // run the program
+s // next line
+#+end_src
