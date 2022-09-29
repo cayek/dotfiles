@@ -7,3 +7,5 @@ README.org
 requirements.txt
 requirements.dev.txt
 setup.cfg
+.pytest_cache
+tests

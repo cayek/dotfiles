@@ -1,0 +1,38 @@
+[org-clock-week]
+command=timeout 1s /home/kcaye/.local/bin/my org print_total_work_week
+interval=60
+signal=7
+color=#A4C2F4
+
+# # Guess the weather hourly
+# [weather]
+# command=curl "wttr.in/Grenoble?format=4"
+# interval=3600
+# color=#A4C2F4
+# [mail]
+# command=~/Private/git/sysadmin/dotfiles/.config/i3blocks/mail.sh
+# interval=60
+# signal=8
+
+[org-clock]
+command=timeout 1s emacsclient -e '(i3-org-clock-indicator)' | sed -r 's/"//g'
+interval=60
+signal=7
+color=#cd5c5c
+
+[org-clock-today]
+command=timeout 1s /home/kcaye/.local/bin/my org print_total_work_today
+interval=60
+signal=7
+color=#25cfca
+
+# # Update time every 5 seconds
+[time]
+command=echo `date +"%Y-%m-%d"`⌛`date +"%H:%M"`
+interval=60
+color=#F79494
+
+[battery]
+command=~/Private/git/sysadmin/dotfiles/.config/i3blocks/battery.sh
+interval=10
+color=#FFFF00
