@@ -1,12 +1,18 @@
 #!/usr/bin/env python
 
+import os
 import fire
 from my.org import Org
+from my.sync import sync_all_projects
 
 class Main(object):
 
     def __init__(self):
         self.org = Org()
+        self.data_root_dir = os.path.expanduser("~/plain/")
+
+    def sync(self):
+        sync_all_projects(self.data_root_dir)
 
 if __name__ == '__main__':
     fire.Fire(Main)

@@ -1,8 +1,8 @@
-from colorama import Back, Style
+from colorama import Back, Style, Fore
 
 
 def section(msg):
-    print(Back.GREEN + "=>" + msg)
+    print(Fore.GREEN + "=>" + msg)
     print(Style.RESET_ALL)
 
 
