@@ -56,3 +56,5 @@ def sync_all_projects(root_dir):
     for p in iter_projects(root_dir):
         if not re.search(regex, str(p)):
             sync_project(p)
+
+    print("Synchronisation done 🍺")
