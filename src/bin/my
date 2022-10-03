@@ -4,6 +4,7 @@ import os
 import fire
 from my.org import Org
 from my.sync import sync_all_projects
+from my.init import init
 
 class Main(object):
 
@@ -13,6 +14,9 @@ class Main(object):
 
     def sync(self):
         sync_all_projects(self.data_root_dir)
+
+    def init(self):
+        init()
 
 if __name__ == '__main__':
     fire.Fire(Main)
