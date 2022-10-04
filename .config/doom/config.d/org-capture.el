@@ -142,6 +142,11 @@
   "Advise org-refile to close the frame"
   (delete-frame))
 
+;;; from https://github.com/doomemacs/doomemacs/issues/3614
+(defadvice! open-org-capture-in-current-window (oldfun &rest args)
+  :around #'org-protocol-capture
+  (let (display-buffer-alist)
+    (apply oldfun args)))
 
 ;; org capture here
 (defun my/org-capture-here ()
