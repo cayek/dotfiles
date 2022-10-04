@@ -113,11 +113,35 @@
 
   )
 
-;; for +org-capture/open-frame
-(setq +org-capture-frame-parameters '((name . "i3-org-capture")
-                                     (width . 70)
-                                     (height . 25)
-                                     (transient . t)))
+
+;;; from https://old.reddit.com/r/orgmode/comments/uycc8m/spawn_a_new_frame_for_orgcapture/
+;;; System org-capture
+;;; taken from: https://www.reddit.com/r/emacs/comments/74gkeq/system_wide_org_capture/
+(defadvice org-switch-to-buffer-other-window
+    (after supress-window-splitting activate)
+  "Delete the extra window if we're in a capture frame"
+  (if (equal "i3-capture" (frame-parameter nil 'name))
+      (delete-other-windows)))
+
+(defun activate-capture-frame ()
+  "run org-capture in capture frame"
+  (select-frame-by-name "i3-capture")
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (org-capture))
+
+(defadvice org-capture-finalize
+    (after delete-capture-frame activate)
+  "Advise capture-finalize to close the frame"
+  (when (and (equal "i3-capture" (frame-parameter nil 'name))
+             (not (eq this-command 'org-capture-refile)))
+    (delete-frame)))
+
+
+(defadvice org-capture-refile
+    (after delete-capture-frame activate)
+  "Advise org-refile to close the frame"
+  (delete-frame))
+
 
 ;; org capture here
 (defun my/org-capture-here ()

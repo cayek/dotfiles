@@ -181,12 +181,12 @@ colors {
 bindsym $mod+n exec emacsclient -e '(+org/toggle-last-clock nil)'
 bindsym $mod+c exec gnome-control-center
 bindcode $mod+34 exec emacsclient -a "" -c -F '((name . "i3-org-clock") (width . 70) (height . 25) (transient . t))' -e '(my/org-clock-goto)'
-bindsym $mod+dollar exec emacsclient  -e '(+org-capture/open-frame)'
-bindsym $mod+Shift+dollar exec emacsclient -a "" -c -F '((name . "i3-org-capture") (width . 70) (height . 25) (transient . t))' -e '(my/org-goto-last-capture)'
+bindsym $mod+dollar exec emacsclient -a "" -c -F '((name . "i3-capture") (width . 70) (height . 25) (transient . t))' -e '(activate-capture-frame)'
+bindsym $mod+Shift+dollar exec emacsclient -a "" -c -F '((name . "i3-capture") (width . 70) (height . 25) (transient . t))' -e '(my/org-goto-last-capture)'
 for_window [title="i3-org-clock"] border pixel 1
 for_window [title="i3-org-clock"] floating enable
-for_window [title="i3-org-capture"] border pixel 1
-for_window [title="i3-org-capture"] floating enable
+for_window [title="i3-capture"] border pixel 1
+for_window [title="i3-capture"] floating enable
 
 # online search
 # bindcode $mod+51 fullscreen disable; exec "emacsclient -ne '(call-interactively (quote my/search))'"
