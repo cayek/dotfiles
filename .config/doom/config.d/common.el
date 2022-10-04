@@ -386,6 +386,14 @@ clocked tasks in minutes."
   (org-tree-to-indirect-buffer)
   )
 
+
+(defun my/org-goto-last-capture ()
+  (+workspace-switch "capture" t)
+  (org-capture-goto-last-stored)
+  (doom/window-maximize-buffer)
+  (org-tree-to-indirect-buffer)
+  )
+
 (defun my/org-datetree-goto-today ()
     (interactive)
     (org-datetree-find-date-create (calendar-current-date))
