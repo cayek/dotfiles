@@ -32,7 +32,7 @@ def sync_project(project_dir):
 
 def sync_all_projects(root_dir):
 
-    regex = r"torefile|git|code|data|dev"
+    regex = r"torefile|git|code|data|dev|[Aa]rchive"
 
     section("Syncing all org files")
     cmd = ["emacsclient", "-e", "(org-save-all-org-buffers)"]
