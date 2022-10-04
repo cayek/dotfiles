@@ -113,6 +113,12 @@
 
   )
 
+;; for +org-capture/open-frame
+(setq +org-capture-frame-parameters '((name . "i3-org-capture")
+                                     (width . 70)
+                                     (height . 25)
+                                     (transient . t)))
+
 ;; org capture here
 (defun my/org-capture-here ()
   (interactive)
