@@ -41,8 +41,8 @@ def sync_all_projects(root_dir):
                          stdout=subprocess.DEVNULL)
 
     # git add all org file
-    for f in Path(root_dir).glob("**/*.org"):
-        if not re.search(regex, str(f)):
+    for f in Path(root_dir).rglob("**/*.org"):
+        if not re.search(regex, str(f.parent)):
             d = f.parent
             os.chdir(d)
             rc = subprocess.call(["git", "add", f"./{f.name}"])
