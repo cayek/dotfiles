@@ -39,7 +39,7 @@ def test_get_today_time_sumup(self):
     self = Org()
     self.print_month_time_sumup()
     self.print_today_time_sumup()
-    date = "2022-06-22"
+    date = "2022-09-29"
     Org().get_date_time_sumup(date)
 
-    self.get_date_time_sumup("2022-09-22")
+    self.get_date_time_sumup(date)

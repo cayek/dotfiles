@@ -1,11 +1,13 @@
 from orgparse import load
 import pandas as pd
+import numpy as np
 import datetime
 import re
 from collections import deque
 import tabulate
 import os
 import json
+from my.helpers import read_config
 
 def get_timesheet_df(file_paths):
     records = []
@@ -85,11 +87,6 @@ def get_columnview_df(file_paths,
 def format_second_to_hour_minute(second):
     return f"{second // 60 // 60}:{(second // 60) % 60:02d}"
 
-def read_config(conf_path):
-    with open(conf_path, 'r') as f:
-        config = json.load(f)
-    return config
-
 
 class Org():
 
@@ -162,11 +159,15 @@ class Org():
                    .reset_index())
 
         timmi_df = self.get_date_timmi_df(date)
-        timmi_df = timmi_df.groupby("tags")[["tags", "TIME_SPENT"]].sum().reset_index()
+        if timmi_df.shape[0] != 0:
+            timmi_df = timmi_df.groupby("tags")[["tags", "TIME_SPENT"]].sum().reset_index()
 
-        df = pd.merge(timmi_df,
-                      time_df,
-                      how="outer")
+            df = pd.merge(timmi_df,
+                          time_df,
+                          how="outer")
+        else:
+            df = time_df
+            df["TIME_SPENT"] = np.nan
 
         total_df = pd.DataFrame.from_records([{"tags": "total",
                                                "TIME_SPENT": df["TIME_SPENT"].sum(),
