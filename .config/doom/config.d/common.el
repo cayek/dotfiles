@@ -613,7 +613,15 @@ clocked tasks in minutes."
   (notmuch-search "tag:inbox")
   )
 
+
+(defun my/new-mail ()
+  (interactive)
+  (notmuch-mua-new-mail t)
+  )
+
+
 (map! :leader
       :desc "mail"     "o m"    #'my/mail-open
+      :desc "new mail"     "o c"    #'my/new-mail
       :desc "search mail"     "s m"    #'consult-notmuch
       )
