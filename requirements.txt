@@ -5,3 +5,4 @@ orgparse
 pandas
 i3ipc
 tabulate
+jupyter

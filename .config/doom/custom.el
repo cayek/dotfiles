@@ -4,7 +4,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((diff-add-log-use-relative-names . t)
+   '((eval add-hook 'after-save-hook
+      (lambda nil
+        (org-babel-tangle))
+      nil t)
+     (diff-add-log-use-relative-names . t)
      (vc-git-annotate-switches . "-w")
      (org-use-tag-inheritance . t)
      (ispell-dictionary . "fr")

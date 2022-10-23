@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+my sync
+
 HOST=$(hostname)
 
 testssh () {
@@ -20,3 +22,4 @@ bk ~/cipher
 bk ~/.gnupg
 bk ~/.ssh
 bk ~/.zsh_history
+bk ~/projects

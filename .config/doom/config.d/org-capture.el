@@ -135,3 +135,12 @@
       :desc "Go to last capature"     "n N"    #'org-capture-goto-last-stored
       :desc "Capture here"     "n h"    #'my/org-capture-here
       )
+
+
+(defun my/org-open-inbox ()
+  (interactive)
+  (find-file my/org-inbox-file))
+
+(map! :leader
+       :desc "Open org inbox"     "n i"    #'my/org-open-inbox)
+

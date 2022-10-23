@@ -15,8 +15,8 @@ class Main(object):
     def sync(self):
         sync_all_projects(self.data_root_dir)
 
-    def init(self):
-        init()
+    def init(self, m="all"):
+        init(m)
 
 if __name__ == '__main__':
     fire.Fire(Main)

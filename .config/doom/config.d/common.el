@@ -201,13 +201,6 @@ shell exits, the buffer is killed."
       "P s" #'my/private-notes-search
       )
 
-(defun my/org-open-inbox ()
-  (interactive)
-  (find-file my/org-inbox-file))
-
-(map! :leader
-       :desc "Open org inbox"     "n i"    #'my/org-open-inbox)
-
 (after! org
   (setq pointage '("contextualisation" "1LP1082 Pré-qualif LP" "psa" "probayes"))
   (defun my/set-pointage ()

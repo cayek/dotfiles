@@ -49,3 +49,4 @@
         (concat "${type:15} ${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
 
   )
+
