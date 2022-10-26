@@ -1,0 +1,18 @@
+# archived mail
+[Filter.2]
+message = Archived message
+query = folder:"/.*[Aa]rchive/"
+tags = -inbox
+
+# deleted mail
+[Filter.3]
+message = deleted message
+query = folder:"/.*[Tt]rash/"
+tags = -inbox;+deleted
+
+# This is the default filter chain
+[SpamFilter]
+[KillThreadsFilter]
+[ListMailsFilter]
+[ArchiveSentMailsFilter]
+[InboxFilter]
