@@ -43,3 +43,6 @@ def test_get_today_time_sumup(self):
     Org().get_date_time_sumup(date)
 
     self.get_date_time_sumup(date)
+
+
+    Org().print_today_time_sumup(date = "2022-10-28")

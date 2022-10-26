@@ -135,6 +135,7 @@ class Org():
         return time_df[cond]
 
     def get_date_timmi_df(self, date):
+        # TODO why avenvente ne sort pas ?
         timmi_df = get_columnview_df([self.timmi_file],
                                      filter_f=filter_forecast)
 
@@ -160,7 +161,7 @@ class Org():
 
         timmi_df = self.get_date_timmi_df(date)
         if timmi_df.shape[0] != 0:
-            timmi_df = timmi_df.groupby("tags")[["tags", "TIME_SPENT"]].sum().reset_index()
+            timmi_df = timmi_df.groupby("tags")[["tags", "TIME_SPENT"]].sum(numeric_only=True).reset_index()
 
             df = pd.merge(timmi_df,
                           time_df,
@@ -178,8 +179,9 @@ class Org():
         return df
 
 
-    def print_today_time_sumup(self):
-        date = datetime.date.today().strftime("%Y-%m-%d")
+    def print_today_time_sumup(self, date=None):
+        if date is None:
+            date = datetime.date.today().strftime("%Y-%m-%d")
         df = self.get_date_time_sumup(date)
         print(tabulate.tabulate(df,
                                 showindex=False,
