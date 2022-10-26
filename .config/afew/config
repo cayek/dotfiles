@@ -1,14 +1,14 @@
 # archived mail
-[Filter.2]
+[Filter.1]
 message = Archived message
 query = folder:"/.*[Aa]rchive/"
-tags = -inbox
+tags = -inbox;-new
 
 # deleted mail
-[Filter.3]
+[Filter.2]
 message = deleted message
 query = folder:"/.*[Tt]rash/"
-tags = -inbox;+deleted
+tags = -inbox;+deleted;-new
 
 # This is the default filter chain
 [SpamFilter]
