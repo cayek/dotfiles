@@ -2,6 +2,7 @@
   (remove-hook 'persp-add-buffer-on-after-change-major-mode-filter-functions #'doom-unreal-buffer-p) ;; include temporary buffers in the current workspace
   (setq persp-emacsclient-init-frame-behaviour-override "main") ;; avoid create anonymous workspace when create new frame
   ;; (setq persp-mode nil) ;; TODO do not save workspace on exit
+  (setq persp-auto-save-opt 0) ;; do not save workspace on exit
 )
 
 (map! (:when (featurep! :ui popup)
