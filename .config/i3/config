@@ -110,7 +110,7 @@ bindcode $mod+49 workspace $workspace_home
 bindcode $mod+21 workspace $workspace_ecran
 bindsym $mod+1 workspace "1-work"
 bindsym $mod+2 workspace "2-web"
-bindsym $mod+3 workspace "3-org"
+bindsym $mod+3 workspace "3-work"
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -124,7 +124,7 @@ bindcode $mod+Shift+49 move container to workspace $workspace_home
 bindcode $mod+Shift+21 move container to workspace $workspace_iiyana_home
 bindsym $mod+Shift+1 move container to workspace "1-work"
 bindsym $mod+Shift+2 move container to workspace "2-web"
-bindsym $mod+Shift+3 move container to workspace "3-org"
+bindsym $mod+Shift+3 move container to workspace "3-work"
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
@@ -180,9 +180,9 @@ colors {
 # capture
 bindsym $mod+n exec emacsclient -e '(+org/toggle-last-clock nil)'
 bindsym $mod+c exec gnome-control-center
-bindcode $mod+34 exec emacsclient -a "" -c -F '((name . "i3-org-clock") (width . 70) (height . 25) (transient . t))' -e '(my/org-clock-goto)'
+bindcode $mod+34 exec emacsclient -a "" -c -F '((name . "i3-org-clock") (width . 100) (height . 40) (transient . t))' -e '(my/org-clock-goto)'
 bindsym $mod+dollar exec /home/kcaye/.config/emacs/bin/org-capture
-bindsym $mod+Shift+dollar exec emacsclient -a "" -c -F '((name . "i3-org-capture") (width . 70) (height . 25) (transient . t))' -e '(my/org-goto-last-capture)'
+bindsym $mod+Shift+dollar exec emacsclient -a "" -c -F '((name . "i3-org-capture") (width . 100) (height . 40) (transient . t))' -e '(my/org-goto-last-capture)'
 for_window [title="i3-org-clock"] border pixel 1
 for_window [title="i3-org-clock"] floating enable
 for_window [title="i3-org-capture"] border pixel 1
@@ -207,7 +207,7 @@ for_window [class="vlc"] floating enable
 bindsym $mod+Shift+x exec "i3lock"
 
 # capture with shutter
-Bindsym $mod+p Exec /home/kcaye/.local/bin/takescreenshot -u # screenshot of the curent window
+Bindsym $mod+p Exec /home/kcaye/.local/bin/takescreenshot
 
 
 # capture to clock

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# TODO still not displayed in org file
+# dir="Private/org/.screenshots"
+# scrot $1 -e "mv \$f $HOME/$dir; convert $HOME/\"$dir/\$f\" -resize 224x224^ $HOME/\"$dir/\$f\".png; echo \"~/$dir/\$f\".png | xclip -selection clipboard"
+
+# test with shutter
+shutter -s

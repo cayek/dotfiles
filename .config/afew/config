@@ -16,3 +16,11 @@ tags = -inbox;+deleted;-new
 [ListMailsFilter]
 [ArchiveSentMailsFilter]
 [InboxFilter]
+
+[MailMover]
+folders = caye/Inbox
+rename = True
+max_age = 15
+
+# rules
+caye/Inbox = 'tag:spam':caye/Spam 'NOT tag:inbox and tag:archive':caye/Archive
