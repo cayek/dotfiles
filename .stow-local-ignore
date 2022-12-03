@@ -9,3 +9,4 @@ requirements.dev.txt
 setup.cfg
 .pytest_cache
 tests
+.gitignore
