@@ -1,0 +1,50 @@
+#+title: Dotfiles TODO list
+
+* 2023
+
+** 2023-01 janvier
+
+*** 2023-01-03 mardi
+**** TODO Setup gpg agent with ssh key
+:PROPERTIES:
+:CREATED: [2023-01-03 mar. 13:28]
+:END:
+:LOGBOOK:
+- Note taken on [2023-01-03 mar. 13:28] \\
+  - https://gitlab.com/ambrevar/dotfiles/-/blob/master/.gnupg/gpg-agent.conf
+  - https://superuser.com/questions/520980/how-to-force-gpg-to-use-console-mode-pinentry-to-prompt-for-passwords
+  - https://opensource.com/article/19/4/gpg-subkeys-ssh
+:END:
+**** DONE Install marp
+CLOSED: [2023-01-03 mar. 14:31]
+:PROPERTIES:
+:CATEGORY: task
+:CREATED: [2023-01-03 mar. 13:30]
+:END:
+:LOGBOOK:
+CLOCK: [2023-01-03 mar. 13:32]--[2023-01-03 mar. 14:15] =>  0:43
+:END:
+- go https://nodejs.org/en/download/ and ddl last version
+- move to ~/.local/ and add to .profile
+#+begin_src sh
+if [ -d "$HOME/.local/node" ] ; then
+    export NODEPATH="$HOME/.local/node/"
+    PATH="$HOME/.local/node/bin:$PATH"
+fi
+#+end_src
+- install with  npm install --save-dev @marp-team/marp-cli
+- cmd npx marp
+- test with
+  #+begin_src sh
+npx marp tests/md/marp-slide-deck.md
+  #+end_src
+**** TODO setup slide tools
+:PROPERTIES:
+:CATEGORY: task
+:CREATED: [2023-01-03 mar. 14:31]
+:END:
+:LOGBOOK:
+- Note taken on [2023-01-03 mar. 14:32] \\
+  I need was working on org to md to html it works so i can run marp in server mode and ad an export to gfm hook each time i save my org buffer then i set up a grammar checker and a tool to draw diagramme D
+:END:
+- [ ]

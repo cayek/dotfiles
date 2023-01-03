@@ -1,0 +1,48 @@
+#+OPTIONS: author:nil date:nil
+#+BEGIN_EXPORT markdown
+---
+theme: gaia
+_class: lead
+paginate: true
+backgroundColor: #fff
+backgroundImage: url('https://marp.app/assets/hero-background.svg')
+style: |
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .columns-left {
+    background: yellow;
+  }
+  .columns-right {
+    background: beige;
+  }
+---
+
+![bg left:40% 80%](https://marp.app/assets/marp.svg)
+#+END_EXPORT
+
+#+markdown: ---
+
+* test
+
+Split pages by horizontal ruler (=---=). It's very simple! :satisfied:
+
+#+begin_src markdown
+# Slide 1
+
+foobar
+
+---
+
+# Slide 2
+
+foobar
+
+#+end_src
+
+
+#+gfm: ---
+
+* test
