@@ -58,3 +58,13 @@
   )
 
 (load-file (expand-file-name "~/plain/config.el"))
+
+
+
+;; (use-package lsp-ltex
+;;   :ensure t
+;;   :hook (text-mode . (lambda ()
+;;                        (require 'lsp-ltex)
+;;                        (lsp)))  ; or lsp-deferred
+;;   :init
+;;   (setq lsp-ltex-version "15.2.0"))  ; make sure you have set this, see below

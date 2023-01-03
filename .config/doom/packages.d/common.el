@@ -18,3 +18,7 @@
 (package! ol-notmuch)
 (package! orgtbl-aggregate :recipe (:host github :repo "tbanel/orgaggregate"))
 (package! sphinx-doc)
+
+(package! lsp-ltex :recipe (:host github
+   :repo "emacs-languagetool/lsp-ltex"
+   :files ("*.el")))
