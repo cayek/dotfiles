@@ -12,9 +12,9 @@
   (setq org-refile-targets '((nil :maxlevel . 2)
                               (org-agenda-files :maxlevel . 2)))
   (setq org-use-property-inheritance t)
-  (setq my/org-inbox-file (concat org-directory "/inbox/inbox.org"))
-  (setq my/orgzly-inbox-file (concat org-directory "/inbox/orgzly_inbox.org"))
-  (setq my/org-pocket-file (concat org-directory "/inbox/pocket.org"))
+  (setq my/org-inbox-file (concat org-directory "/inbox.org"))
+  (setq my/orgzly-inbox-file (concat org-directory "/orgzly_inbox.org"))
+  (setq my/org-pocket-file (concat org-directory "/pocket.org"))
   (setq my/org-timmi-file (concat org-directory "/pro/timmi/2022_timmi.org"))
 
   (setq org-archive-location "%s_archive::")

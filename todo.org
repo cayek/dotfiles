@@ -44,7 +44,24 @@ npx marp tests/md/marp-slide-deck.md
 :CREATED: [2023-01-03 mar. 14:31]
 :END:
 :LOGBOOK:
+- Note taken on [2023-01-05 jeu. 14:39] \\
+  Je suis en train de convertir mon ancienne pres avec le pipe marpit. je bloque sur le sdouble colonne
 - Note taken on [2023-01-03 mar. 14:32] \\
   I need was working on org to md to html it works so i can run marp in server mode and ad an export to gfm hook each time i save my org buffer then i set up a grammar checker and a tool to draw diagramme D
 :END:
-- [ ]
+***** create you own md orgmode exporter
+:LOGBOOK:
+- Note taken on [2023-01-05 jeu. 14:25] \\
+  This is doable ^^ but I must move on the presentation. Is would be nice to export list with + and note speaker
+:END:
+- see [[file:~/.config/emacs/.local/straight/repos/org/lisp/ox-md.el::defun org-md-item (item contents info]]
+
+- and [[file:~/.config/emacs/.local/straight/repos/ox-gfm/ox-gfm.el::(org-export-define-derived-backend 'gfm 'md]]
+
+- test
+
+#+begin_src elisp
+(setq item (org-element-at-point))
+(org-element-property :type (org-export-get-parent item))
+(org-element-property :structure item)
+#+end_src

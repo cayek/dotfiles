@@ -12,3 +12,7 @@ venv
 
 
 .clangd
+
+tests/md/marp-slide-deck.html
+tests/md/org-marp-slide-deck.html
+tests/md/org-marp-slide-deck.md
