@@ -6,61 +6,34 @@
   (setq org-default-properties (append (list "ROAM_REFS" "AUTHOR" "MONTANT") org-default-properties))
   (setq org-startup-folded t)
   (setq org-log-done 'time)
-  (setq org-directory "~/plain/org")
+  (setq org-directory "~/plain/")
   (setq org-attach-directory "~/plain/org/.attach")
-  (setq org-id-locations-file "~/plain/.orgids")
+  (setq org-id-locations-file "~/plain/org/.orgids")
   (setq org-refile-targets '((nil :maxlevel . 2)
                               (org-agenda-files :maxlevel . 2)))
   (setq org-use-property-inheritance t)
-  (setq my/org-inbox-file (concat org-directory "/inbox.org"))
-  (setq my/orgzly-inbox-file (concat org-directory "/orgzly_inbox.org"))
-  (setq my/org-pocket-file (concat org-directory "/pocket.org"))
-  (setq my/org-timmi-file (concat org-directory "/pro/timmi/2022_timmi.org"))
+  (setq my/org-inbox-file "~/plain/org/00_INBOX.org")
 
   (setq org-archive-location "%s_archive::")
   ;; capture templates
   (setq org-capture-templates
-        (quote (("j" "journal" entry (file+datetree my/org-inbox-file)
+        (quote (("j" "journal" entry (file my/org-inbox-file)
                  "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n")
-                ("g" "messsage" entry (file+datetree my/org-inbox-file)
-                 "* %? \n:PROPERTIES:\n:CATEGORY: msg\n:CREATED: %U\n:END:\n\n\n")
-                ("n" "note" entry (file+datetree my/org-inbox-file)
-                 "* %? \n:PROPERTIES:\n:CATEGORY: note \n:CREATED: %U\n:END:\n\n\n")
-                ("m" "in a Meeting" entry (file+datetree my/org-inbox-file)
+                ("m" "in a Meeting" entry (file my/org-inbox-file)
                  "* meeting with %? \n:PROPERTIES:\n:CATEGORY: meeting\n:CREATED: %U\n:END:\n:LOGBOOK:\n:END:\n"
-                 :clock-in t :clock-resume t)
-                ("z" "task" entry (file+datetree my/org-inbox-file)
-                 "* %? \n:PROPERTIES:\n:CATEGORY: task\n:CREATED: %U\n:END:\n"
                  :clock-in t :clock-resume t)
                 ("t" "TODO" entry (file+datetree my/org-inbox-file)
                  "* TODO %? \n:PROPERTIES:\n:CATEGORY: task\n:CREATED: %U\n:END:\n")
-                ("T" "Timmi" entry (file+datetree my/org-timmi-file)
-                 "* %u \n:PROPERTIES:\n:TIME_SPENT: %? \n:END:\n")
                 ("k" "to clock" entry (clock)
                  "* %U %a\n %?\n\n%:initial")
-                ("w" "At work" entry (file+datetree my/org-inbox-file)
-                 "* %? :probayes: \n:PROPERTIES:\n:s: velotaf\n:k: 32\n:t: 90\n:DATE: %u\n:END:\n"
-                 :clock-in t :clock-resume t)
-                ("b" "bookmark" entry (file+datetree my/org-inbox-file)
-                 "* %a\n:PROPERTIES:\n:CREATED: %U\n:CATEGORY: bookmark\n:END:\n%?")
-                ("p" "pocket" entry (file+datetree my/org-pocket-file)
-                 "* TODO %a\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?")
-                ("s" "sport" entry (file+datetree my/org-inbox-file)
-                 "* %? :sport: \n:PROPERTIES:\n:s: 0\n:k: 0\n:t: 0\n:i: 0\n:d: 0\n:DATE: %u\n:END:\n")
                 ("W" "Web site" entry
-                 (file+datetree my/org-inbox-file)
+                 (file my/org-inbox-file)
                  "* %a :website:\n\n%U %?\n\n%:initial")
                 )))
 
   ;; my org agenda files
   (setq org-agenda-files
-        (list
-          "~/plain/inbox/mobile_inbox.org"
-          "~/plain/inbox/orgzly_inbox.org"
-          "~/plain/inbox/web.org"
-          my/org-inbox-file
-          "~/plain/inbox/2021_inbox.org"
-          )
+        (directory-files "~/plain/org" t "\\.org$")
         )
 
   ;; Separate drawers for clocking and logs

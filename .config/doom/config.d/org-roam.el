@@ -9,7 +9,7 @@
          )))
   (setq roam-user "cayek"
         roam-email "kc@caye.fr"
-        org-roam-directory "~/plain/org"
+        org-roam-directory "~/plain/"
         org-roam-capture-ref-templates
         '(("r" "ref" plain "%?" :if-new
            (file+head "${slug}.org" "#+title: ${title}\n\n* Links")

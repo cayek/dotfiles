@@ -125,3 +125,45 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+
+## alias
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+alias h="history | tail -n 30 | cut -c 8-"
+alias feh="feh --keep-zoom-vp -d --recursive --action \"echo '%f' | xclip -selection clipboard\""
+alias icat="kitty +kitten icat"
+
+
+# The emacs or emacsclient to use
+function _emacsfun
+{
+    # Replace with `emacs` to not run as server/client
+    emacsclient -c -n $@
+}
+
+
+# An emacs 'alias' with the ability to read from stdin
+function e
+{
+    # If the argument is - then write stdin to a tempfile and open the
+    # tempfile.
+    if [[ $1 == - ]]; then
+        tempfile=$(mktemp emacs-stdin-$USER.XXXXXXX --tmpdir)
+        cat - > $tempfile
+        _emacsfun -e "(progn (find-file \"$tempfile\")
+                             (set-visited-file-name nil)
+                             (rename-buffer \"*stdin*\" t))
+                 " 2>&1 > /dev/null
+    else
+        _emacsfun "$@"
+    fi
+}
+
+# virtualenv
+if command -v virtualenv &> /dev/null
+then
+    export WORKON_HOME=$HOME/.virtualenvs
+    export VIRTUALENVWRAPPER_PYTHON="$(which python3)"
+    . $HOME/.local/bin/virtualenvwrapper.sh
+fi

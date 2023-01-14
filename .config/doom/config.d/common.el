@@ -279,7 +279,7 @@ shell exits, the buffer is killed."
   (let* ((tags (org-roam-tag-completions))
          (tag (completing-read "Tag: " tags))
          (m-tag (--filter (s-contains? tag it) tags))
-         (files (-distinct (-concat (my/org-roam-files-from-tag tag) (list my/orgzly-inbox-file my/org-inbox-file my/org-pocket-file))))
+         (files (-distinct (-concat (my/org-roam-files-from-tag tag) org-agenda-files)))
          (buffer (org-ql-view--buffer (format "*org-ql: %s*" tag)))
          )
     (org-ql-search files (list 'and (push 'tags m-tag) '(not (tags "ARCHIVE")) '(ts))
