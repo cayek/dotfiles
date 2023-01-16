@@ -179,7 +179,6 @@ colors {
 
 # capture
 bindsym $mod+n exec emacsclient -e '(+org/toggle-last-clock nil)'
-bindsym $mod+c exec gnome-control-center
 bindcode $mod+34 exec emacsclient -a "" -c -F '((name . "i3-org-clock") (width . 100) (height . 40) (transient . t))' -e '(my/org-clock-goto)'
 bindsym $mod+dollar exec ~/.config/emacs/bin/org-capture
 bindsym $mod+Shift+dollar exec emacsclient -a "" -c -F '((name . "i3-org-capture") (width . 100) (height . 40) (transient . t))' -e '(my/org-goto-last-capture)'
@@ -187,6 +186,11 @@ for_window [title="i3-org-clock"] border pixel 1
 for_window [title="i3-org-clock"] floating enable
 for_window [title="i3-org-capture"] border pixel 1
 for_window [title="i3-org-capture"] floating enable
+
+# clipboard tool
+exec --no-startup-id greenclip daemon>/dev/null
+bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
+
 
 # online search
 # bindcode $mod+51 fullscreen disable; exec "emacsclient -ne '(call-interactively (quote my/search))'"
