@@ -6,3 +6,4 @@ pandas
 i3ipc
 tabulate
 jupyter
+GitPython

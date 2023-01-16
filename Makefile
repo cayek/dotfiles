@@ -49,5 +49,6 @@ unstow:
 .PHONY: install-my
 install-my: venv
 	rm -f ~/.local/bin/my; ln -s `pwd`/venv/bin/my ~/.local/bin
+	rm -f ~/.local/bin/mysync; ln -s `pwd`/venv/bin/mysync ~/.local/bin
 
 # end

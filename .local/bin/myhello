@@ -25,4 +25,4 @@ if os.system(cmd) != 0:
 
 # sync
 if (HOME_DIR / "plain/config.json").exists():
-    os.system("my sync")
+    os.system("mysync")
