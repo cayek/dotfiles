@@ -4,7 +4,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((org-superstar-prettify-item-bullets)
+   '((org-download-image-dir . "./images/")
+     (org-superstar-prettify-item-bullets)
      (eval add-hook 'after-save-hook
       (lambda nil
         (org-gfm-export-to-markdown))
