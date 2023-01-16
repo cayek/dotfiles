@@ -12,7 +12,7 @@
   (setq org-refile-targets '((nil :maxlevel . 2)
                               (org-agenda-files :maxlevel . 2)))
   (setq org-use-property-inheritance t)
-  (setq my/org-inbox-file "~/plain/org/00_INBOX.org")
+  (setq my/org-inbox-file "~/plain/org/agenda/00_INBOX.org")
 
   (setq org-archive-location "%s_archive::")
   ;; capture templates
@@ -33,7 +33,7 @@
 
   ;; my org agenda files
   (setq org-agenda-files
-        (directory-files "~/plain/org" t "\\.org$")
+        (directory-files "~/plain/org/agenda" t "\\.org$")
         )
 
   ;; Separate drawers for clocking and logs
