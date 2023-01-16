@@ -7,9 +7,11 @@
 ;; TODO setup org download: this setup work ?
 (setq-default org-download-image-dir "~/plain/data/s/")
 (setq-default org-download-method 'directory)
+(setq-default org-download-heading-lvl nil)
 (after! org-download
   (setq org-download-method 'directory)
   (setq org-download-image-dir "~/plain/data/s/")
+  (setq org-download-heading-lvl nil)
   (setq org-download-link-format "[[file:s/%s]]\n")
   )
 

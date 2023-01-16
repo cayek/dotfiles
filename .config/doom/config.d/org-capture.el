@@ -2,7 +2,7 @@
   (require 'org-protocol-capture-html)
   (setq org-attach-use-inheritance t)
   (setq org-startup-with-inline-images 'nil)
-  (setq org-image-actual-width 400)
+  (setq org-image-actual-width t)
   (setq org-default-properties (append (list "ROAM_REFS" "AUTHOR" "MONTANT") org-default-properties))
   (setq org-startup-folded t)
   (setq org-log-done 'time)
