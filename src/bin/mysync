@@ -13,6 +13,13 @@ def sync_project(proj):
     section(f"Syncing project: {proj}")
     repo = Repo(proj)
 
+    if (proj / "presync").exists():
+        os.chdir(proj)
+        rc = subprocess.call(["./presync"],
+                             stderr=subprocess.DEVNULL,
+                             stdout=subprocess.DEVNULL)
+
+
     # add untracked file
     for item in repo.untracked_files:
         p = Path(item)
@@ -32,9 +39,9 @@ def sync_project(proj):
                          stdout=subprocess.DEVNULL)
     if rc != 0:
         warning("Git annex fail")
-    if (proj / "sync").exists():
+    if (proj / "postsync").exists():
         os.chdir(proj)
-        rc = subprocess.call(["./sync"],
+        rc = subprocess.call(["./presync"],
                              stderr=subprocess.DEVNULL,
                              stdout=subprocess.DEVNULL)
 
