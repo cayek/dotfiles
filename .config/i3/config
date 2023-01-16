@@ -181,7 +181,7 @@ colors {
 bindsym $mod+n exec emacsclient -e '(+org/toggle-last-clock nil)'
 bindsym $mod+c exec gnome-control-center
 bindcode $mod+34 exec emacsclient -a "" -c -F '((name . "i3-org-clock") (width . 100) (height . 40) (transient . t))' -e '(my/org-clock-goto)'
-bindsym $mod+dollar exec /home/kcaye/.config/emacs/bin/org-capture
+bindsym $mod+dollar exec ~/.config/emacs/bin/org-capture
 bindsym $mod+Shift+dollar exec emacsclient -a "" -c -F '((name . "i3-org-capture") (width . 100) (height . 40) (transient . t))' -e '(my/org-goto-last-capture)'
 for_window [title="i3-org-clock"] border pixel 1
 for_window [title="i3-org-clock"] floating enable

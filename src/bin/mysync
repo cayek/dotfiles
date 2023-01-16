@@ -1,0 +1,48 @@
+#!/usr/bin/env python
+
+import os
+from pathlib import Path
+from git import Repo
+from my.utils import section, message, warning
+import subprocess
+
+HOME_DIR = Path("~/").expanduser()
+
+def sync_project(proj):
+
+    section(f"Syncing project: {proj}")
+    repo = Repo(proj)
+
+    # add untracked file
+    for item in repo.untracked_files:
+        p = Path(item)
+
+        ext = p.suffix
+        if ext == ".org":
+            message(f"Track {proj/p}")
+            repo.index.add(p)
+
+    if len(repo.untracked_files) != 0:
+        warning(f"Project {proj} is dirty")
+
+    # sync with git annex
+    os.chdir(proj)
+    rc = subprocess.call(['git', "annex", "sync"],
+                         stderr=subprocess.DEVNULL,
+                         stdout=subprocess.DEVNULL)
+    if rc != 0:
+        warning("Git annex fail")
+    if (proj / "sync").exists():
+        os.chdir(proj)
+        rc = subprocess.call(["./sync"],
+                             stderr=subprocess.DEVNULL,
+                             stdout=subprocess.DEVNULL)
+
+
+projects = [d for d in (HOME_DIR / "plain/projects/").glob("*")
+            if (d.is_dir and (d/".git").exists())]
+projects += [HOME_DIR / "plain/org",
+             HOME_DIR / "dotfiles"]
+
+for proj in projects:
+    sync_project(proj)
