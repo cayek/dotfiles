@@ -8,7 +8,7 @@ HOME_DIR = Path("~/").expanduser()
 
 # mount plain
 if not (HOME_DIR / "plain/config.json").exists():
-    if subprocess.call(["gocryptfs", "cipher", "plain"]) != 0:
+    if subprocess.call(["gocryptfs", ".cipher", "plain"]) != 0:
         sys.exit("Fail to mount plain")
 
 
