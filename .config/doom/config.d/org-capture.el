@@ -28,7 +28,7 @@
                  "* %U %a\n %?\n\n%:initial")
                 ("W" "Web site" entry
                  (file my/org-inbox-file)
-                 "* %a :website:\n\n%U %?\n\n%:initial")
+                 "* %a :website:\n:PROPERTIES:\n:CREATED: %U\n:END:\n %?\n\n%:initial")
                 )))
 
   ;; my org agenda files

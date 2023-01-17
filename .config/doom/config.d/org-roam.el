@@ -12,10 +12,10 @@
         org-roam-directory "~/plain/"
         org-roam-capture-ref-templates
         '(("r" "ref" plain "%?" :if-new
-           (file+head "${slug}.org" "#+title: ${title}\n\n* Links")
+           (file+head "org/torefile/${slug}.org" "#+title: ${title}\n\n* Links")
            :unnarrowed t))
         org-roam-capture-templates '(("d" "default" plain "%?" :target
-                                      (file+head "${slug}.org" "#+title: ${title}\n\n* Links")
+                                      (file+head "org/torefile/${slug}.org" "#+title: ${title}\n\n* Links")
                                       :unnarrowed t))
 
         org-roam-node-display-template "${title:*} ${tags:20}"

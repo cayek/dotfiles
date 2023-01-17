@@ -2,6 +2,9 @@
 
 (after! org
   (setq org-startup-folded 'showeverything)
+  ;; use `firefox` to open PDF file: link
+  (add-to-list 'org-file-apps '("\\.djvu\\'" . "okular %s"))
+  (add-to-list 'org-file-apps '("\\.epub\\'" . "okular %s"))
   )
 
 ;; TODO setup org download: this setup work ?
