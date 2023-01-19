@@ -14,7 +14,7 @@ if ext == "pdf":
     output_file = str(input_file).replace(".pdf", "_mobile.pdf")
     cmd = (["k2pdfopt", f"{input_file}",
             "-o", f"{output_file}"] +
-           "-ui- -w 1080 -h 2160 -dpi 403 -idpi -2 -c -toc -p 1-3".split(" "))
+           "-ui- -w 1080 -h 2160 -dpi 403 -idpi -2 -c -toc".split(" "))
     if len(sys.argv) >= 3:
         mode = sys.argv[2]
         cmd += ["-mode", f"{mode}"]
