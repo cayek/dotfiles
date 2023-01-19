@@ -12,17 +12,19 @@ assert ext in ["pdf", "epub"]
 
 if ext == "pdf":
     output_file = str(input_file).replace(".pdf", "_mobile.pdf")
-    mode = sys.argv[2] if len(sys.argv) >= 3 else "2col"
     cmd = (["k2pdfopt", f"{input_file}",
-            "-mode" f"{mode}",
             "-o", f"{output_file}"] +
-           "-ui- -w 1080 -h 2160 -dpi 403 -idpi -2 -c".split(" "))
+           "-ui- -w 1080 -h 2160 -dpi 403 -idpi -2 -c -toc -p 1-3".split(" "))
+    if len(sys.argv) >= 3:
+        mode = sys.argv[2]
+        cmd += ["-mode", f"{mode}"]
+    print(cmd)
     subprocess.call(cmd)
 elif ext == "epub":
     output_file = str(input_file).replace(".epub", "_mobile.pdf")
     cmd = ["ebook-convert",
-           f"'{input_file}'",
-           f"'{output_file}'",
+           f'{input_file}',
+           f'{output_file}',
            "--custom-size", "1080x2160",
            "--unit", "devicepixel",
            "--pdf-page-margin-left", "1",
