@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: marp simple slide
+# uuid: marp_simple_slide
+# key: <ms
+# condition: t
+# --
+TODO
+#+BEGIN_EXPORT markdown
+<!--
+$0
+-->
+---
+#+END_EXPORT
+
+*
