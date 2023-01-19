@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+HOME_DIR = Path("~/").expanduser()
+
+# TODO define profile
+# TODO create a command with fire
+profile = {}
+
+f = Path(f"{HOME_DIR}/plain/data/b/torefile/2004jouleBeauvoisPetitTraiteManipulationUsageHonnêtesGens.epub")
+output = f.parent / f.name.replace(".epub", ".pdf")
+assert f.exists()
+
+cmd = ["ebook-convert",
+       f"'{f}'",
+       f"'{output}'",
+       "--custom-size", "1080x2160",
+       "--unit", "devicepixel",
+       "--pdf-page-margin-left", "1",
+       "--pdf-page-margin-right", "1",
+       "--pdf-page-margin-bottom", "1",
+       "--pdf-page-margin-top", "1",
+       "--base-font-size", "28",
+       "--pdf-default-font-size", "28"]
+print(" ".join(cmd))
+subprocess.call(cmd)
+# TODO open file

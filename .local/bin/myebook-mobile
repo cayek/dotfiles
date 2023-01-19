@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+import sys
+from pathlib import Path
+import subprocess
+
+# input_file = "/home/cayek/tmp/Kordopatis-Zilos_Near-Duplicate_Video_Retrieval_ICCV_2017_paper.pdf"
+input_file = sys.argv[1]
+input_file = Path(input_file)
+assert input_file.exists()
+ext = str(input_file).split(".")[-1]
+assert ext in ["pdf", "epub"]
+
+if ext == "pdf":
+    output_file = str(input_file).replace(".pdf", "_mobile.pdf")
+    mode = sys.argv[2] if len(sys.argv) >= 3 else "2col"
+    cmd = (["k2pdfopt", f"{input_file}",
+            "-mode" f"{mode}",
+            "-o", f"{output_file}"] +
+           "-ui- -w 1080 -h 2160 -dpi 403 -idpi -2 -c".split(" "))
+    subprocess.call(cmd)
+elif ext == "epub":
+    output_file = str(input_file).replace(".epub", "_mobile.pdf")
+    cmd = ["ebook-convert",
+           f"'{input_file}'",
+           f"'{output_file}'",
+           "--custom-size", "1080x2160",
+           "--unit", "devicepixel",
+           "--pdf-page-margin-left", "1",
+           "--pdf-page-margin-right", "1",
+           "--pdf-page-margin-bottom", "1",
+           "--pdf-page-margin-top", "1",
+           "--base-font-size", "28",
+           "--pdf-default-font-size", "28"]
+    # print(" ".join(cmd))
+    subprocess.call(cmd)
+
+subprocess.call(["okular", f"{output_file}"])
