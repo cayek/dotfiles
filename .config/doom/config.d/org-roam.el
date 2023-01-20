@@ -46,7 +46,7 @@
         )
       ))
   (setq org-roam-node-display-template
-        (concat "${type:15} ${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+        (concat "${title:*} " (propertize "${tags:30}" 'face 'org-tag)))
 
   )
 
