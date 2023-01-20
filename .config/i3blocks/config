@@ -21,7 +21,7 @@ signal=7
 color=#cd5c5c
 
 [org-clock-today]
-command=timeout 1s /home/kcaye/.local/bin/my org print_total_work_today
+command=timeout 5s ~/.local/bin/my org print_total_work_today
 interval=60
 signal=7
 color=#25cfca
