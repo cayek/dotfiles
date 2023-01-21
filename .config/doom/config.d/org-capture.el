@@ -22,13 +22,15 @@
                 ("m" "in a Meeting" entry (file my/org-inbox-file)
                  "* meeting with %? \n:PROPERTIES:\n:CATEGORY: meeting\n:CREATED: %U\n:END:\n:LOGBOOK:\n:END:\n"
                  :clock-in t :clock-resume t)
-                ("t" "TODO" entry (file+datetree my/org-inbox-file)
+                ("t" "TODO" entry (file my/org-inbox-file)
                  "* TODO %? \n:PROPERTIES:\n:CATEGORY: task\n:CREATED: %U\n:END:\n")
                 ("k" "to clock" entry (clock)
                  "* %U %a\n %?\n\n%:initial")
                 ("W" "Web site" entry
                  (file my/org-inbox-file)
                  "* %a :website:\n:PROPERTIES:\n:CREATED: %U\n:END:\n %?\n\n%:initial")
+                ("b" "bookmark" entry (file my/org-inbox-file)
+                 "* %a\n:PROPERTIES:\n:CREATED: %U\n:CATEGORY: bookmark\n:END:\n%?")
                 )))
 
   ;; my org agenda files
