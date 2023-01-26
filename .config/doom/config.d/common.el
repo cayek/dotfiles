@@ -222,6 +222,10 @@ shell exits, the buffer is killed."
        (if d (my/org-refile-to-datetree file d))
      )))
 
+(defun my/org-refile-to-file (file)
+  (org-refile nil nil (list nil file nil nil) "refile to datetree")
+  )
+
 (after! org-ql
   (setq org-ql-view-display-buffer-action
         '((display-buffer-no-window) (allow-no-window . t))))
