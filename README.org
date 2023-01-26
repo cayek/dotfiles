@@ -1,5 +1,193 @@
-bootstrap 
+* doom emacs
+* fd and rg
+** install
+#+begin_src sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install ripgrep
+cargo install fd-find
+#+end_src
+* xterm
+** install
+#+begin_src conf :tangle ~/xterm-24bit.terminfo
+xterm-24bit|xterm with 24-bit direct color mode,
+   use=xterm-256color,
+   sitm=\E[3m,
+   ritm=\E[23m,
+   setb24=\E[48;2;%p1%{65536}%/%d;%p1%{256}%/%{255}%&%d;%p1%{255}%&%dm,
+   setf24=\E[38;2;%p1%{65536}%/%d;%p1%{256}%/%{255}%&%d;%p1%{255}%&%dm,
+#+end_src
 
-git submodule init 
-stow 
-my-init
+#+begin_src sh
+sudo apt-get install xterm
+tic -x -o ~/.terminfo ~/xterm-24bit.terminfo
+#+end_src
+* tmux
+** install
+#+begin_src sh
+sudo apt install tmux
+cd
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cp .tmux/.tmux.conf.local .
+#+end_src
+* shell
+* zsh
+** install
+#+begin_src sh
+sudo apt install zsh curl
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#+end_src
+* ssh
+** conf
+
+#+begin_src conf :tangle ~/.ssh/config
+Host *
+    ControlMaster yes
+
+#+end_src
+* python
+** install
+#+begin_src sh
+python3 -m pip install --upgrade pip
+python3 -m pip install -U 'python-lsp-server[all]' pytest nose virtualenv virtualenvwrapper jupyter
+#+end_src
+* c++
+** cmake
+*** build
+#+begin_src sh
+sudo apt-get install libssl-dev
+
+mkdir ~/src
+cd ~/src
+git clone --depth=1 https://github.com/Kitware/CMake.git
+cd CMake
+./bootstrap && make && sudo make install
+#+end_src
+** locate
+#+begin_src sh
+if hash apt 2>/dev/null; then
+    sudo apt mlocate
+fi
+sudo updatedb
+#+end_src
+** clang
+#+begin_src sh
+mkdir ~/src
+cd ~/src
+git clone --depth=1 https://github.com/llvm/llvm-project.git
+cd llvm-project
+mkdir build
+cd build
+cmake -DLLVM_ENABLE_PROJECTS=clang -G "Unix Makefiles" ../llvm
+make
+make check-clang
+#+end_src
+** rtag
+#+begin_src sh
+mkdir ~/src
+cd ~/src
+git clone --recursive https://github.com/Andersbakken/rtags.git
+cd rtags
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
+make
+#+end_src
+** ccls
+*** install with snap
+#+begin_src sh
+sudo snap install ccls --classic
+#+end_src
+* kitty
+* firefox
+** [[https://github.com/tridactyl/tridactyl][tridactyl]]
+*** install
+- follow [[https://github.com/tridactyl/tridactyl#installation][Installation]]
+** [[https://old.reddit.com/r/firefox/comments/nwrtdv/how_do_i_hide_the_top_horizontal_tab_bar_so_only/][How do I hide the top horizontal tab bar so only the tree-styled Sidebery side tab bar remains? : firefox]] :website:
+
+[2023-01-17 mar. 15:54]
+
+1. Find your profile folder (hence referred to as =${PROFILE}=): go to =about:support= and look at the line that says "Profile folder".
+2. Toggle the [[https://github.com/FirefoxCSS-Store/FirefoxCSS-Store.github.io/blob/main/README.md#generic-installation][relevant]] =about:config= flags.
+3. Close Firefox.
+4. Put this in =${PROFILE}/chrome/userChrome.css= (create the file if it doesn't already exist): = #TabsToolbar { visibility: collapse; } =
+5. Start up Firefox again.
+
+For the second bit, I think if you check the "Title bar" box when you go to "Customize" (Menu -> More Tools -> Customize Toolbar), it'll display your OS's title bar.
+* [[https://github.com/erebe/greenclip][greenclip]]
+** Installation
+#+Begin_src sh
+cd ~/.local/bin
+wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+chmon 700 greenclip
+#+end_src
+* pdftools
+** [[https://www.willus.com/k2pdfopt/][Willus.com's K2pdfopt]]
+*** Install
+[[https://www.willus.com/k2pdfopt/download/?-1674130108][download from here]] and move to
+#+begin_src shell
+cd tmp
+wget https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w5/Kordopatis-Zilos_Near-Duplicate_Video_Retrieval_ICCV_2017_paper.pdf
+k2pdfopt Kordopatis-Zilos_Near-Duplicate_Video_Retrieval_ICCV_2017_paper.pdf
+#+end_src
+*** k2pdfopt doc see [[https://manpages.ubuntu.com/manpages/lunar/man1/k2pdfopt.1.html][k2pdfopt]]
+#+begin_src text
+-mode <mode>      Shortcut for setting multiple options at once which
+                  determine the basic way in which k2pdfopt will behave.
+                  Available modes are:
+                      copy   "Copy" mode.  This isn't really intended for
+                             use with an e-reader.  It just creates a
+                             bitmapped copy of your source document at the
+                             exact same dimensions.  This can be useful in
+                             order to eliminate any font compatibility
+                             issues or if you want to eliminate selectable
+                             text (follow with -mode copy with -ocr-).
+                             The equivalent settings are -n- -wrap- -col 1
+                             -vb -2 -w 1s -h 1s -dpi 150 -rt 0 -c -t- -f2p
+                             -2 -m 0 -om 0 -pl 0 -pr 0 -pt 0 -pb 0 -mc-.
+                             Use -odpi to select the bitmap resolution.
+                             Note 1:  Use -mode copy -n if you want an exact
+                                      copy (output in native mode).
+                             Note 2:  The default gamma and contrast settings
+                                      are not reset by -mode copy.  If you
+                                      want a perfect copy, do this:
+                                      -mode copy -gamma 1 -s- -cmax 1
+                      fp     "Fit Page" mode.  Also can use -mode fitpage.
+                             Fits the entire contents of each source page
+                             onto the reader display.  Same as -n -wrap- -col 1
+                             -vb -2 -f2p -2 -t.
+                      fw     "Fit Width" mode.  Fits the text to the width
+                             of the reader in landscape mode without doing any
+                             text re-flow.  This is the best way to preserve
+                             the original layout of the source document.
+                             To fit to the reader width in portrait mode, add
+                             -ls- after -mode fw to turn off landscape.
+                             The -mode fw option is equivalent to -n -wrap-
+                             -col 1 -vb -2 -t -ls.  It was inspired by SoPDF's
+                             "fit width" option.  Can also use -mode sopdf
+                             or -mode fitwidth
+                      2col   "Two-column" mode.  Same as -n -wrap- -col 2
+                             -vb -2 -t.  Optimizes for a 2-column scientific
+                             article with native PDF output.
+                      tm     "Trim margins" mode.  Same as -mode copy, but
+                             sets the output to be trimmed to the margins and
+                             the width and height of the output to match the
+                             trimmed source pages.  Also uses native mode.
+                             Equivalent to -n -wrap- -col 1 -vb -2 -f2p -2 -t
+                             -w 1t -h 1t -rt 0 -c -m 0 -om 0 -pl 0 -pr 0 -pt 0
+                             -pb 0 -mc-.  Can also use -mode trim.
+                      crop   "Crop" mode.  Used with the -cbox option, this
+                             puts each cropped area on a separate page,
+                             untrimmed, and sizes the page to the cropped
+                             region.  Same as -wrap- -col 1 -vb -2 -w 1t -h 1t
+                             -t- -rt 0 -c -f2p -2 -m 0 -om 0 -pad 0 -mc- -n
+                      concat "Concatenation" mode.  Similar to -mode crop,
+                             but keeps the output pages the same size as the
+                             source pages and fits as many crop-boxed regions
+                             onto each new output page as possible without
+                             breaking them across pages.  Equivalent to: -n
+                             -wrap- -col 1 -vb -2 -t- -f2p -3 -fc- -w 1s -h 1s
+                             -ocr-
+                      def    "Default" mode. This is the mode you get if you
+                             run k2pdfopt with no customized options.  It is
+                             equivalent to -wrap -n- -col 2 -ocr m -vb 1.75
+                             -dev k2 -rt auto -c- -t -f2p 0 -m 0 -om 0.02 -ls-
+#+end_src
