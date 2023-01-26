@@ -74,7 +74,7 @@
            (
             (org-agenda-span 30)
             (org-agenda-start-day (org-today))
-            (org-agenda-tag-filter-preset '("+probayes"))
+            (org-agenda-tag-filter-preset '("+work"))
             ))
           ("d" "Today review"
            agenda ""

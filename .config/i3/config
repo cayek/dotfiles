@@ -211,7 +211,7 @@ for_window [class="vlc"] floating enable
 bindsym $mod+Shift+x exec "i3lock"
 
 # capture with shutter
-Bindsym $mod+p Exec /home/kcaye/.local/bin/takescreenshot
+Bindsym $mod+p Exec ~/.local/bin/takescreenshot
 
 
 # capture to clock
@@ -247,7 +247,6 @@ mode "$screenlayout_launcher" {
     bindsym l exec ~/.screenlayout/laptop.sh
     bindsym h exec ~/.screenlayout/home.sh
     bindsym s exec ~/.screenlayout/home_split.sh
-    bindsym p exec ~/.screenlayout/probayes_iiyama_only.sh
 
     bindsym Escape mode "default"
     bindsym Return mode "default"

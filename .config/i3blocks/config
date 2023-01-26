@@ -1,5 +1,5 @@
 [org-clock-week]
-command=timeout 1s /home/kcaye/.local/bin/my org print_total_work_week
+command=timeout 5s ~/.local/bin/my org print_total_work_week
 interval=60
 signal=7
 color=#A4C2F4

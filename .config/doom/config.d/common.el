@@ -2,13 +2,11 @@
 ;;
 ;; Copyright (C) 2022 Kevin caye
 ;;
-;; Author: Kevin caye <kevin.caye@probayes.com>
-;; Maintainer: Kevin caye <kevin.caye@probayes.com>
+;; Author: Kevin caye <kevin@caye.fr>
+;; Maintainer: Kevin caye <kevin@caye.fr>
 ;; Created: juin 30, 2022
 ;; Modified: juin 30, 2022
 ;; Version: 0.0.1
-;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex tools unix vc wp
-;; Homepage: https://github.com/kcaye/common
 ;; Package-Requires: ((emacs "24.3"))
 ;;
 ;; This file is not part of GNU Emacs.
@@ -201,23 +199,6 @@ shell exits, the buffer is killed."
       "P s" #'my/private-notes-search
       )
 
-(after! org
-  (setq pointage '("contextualisation" "1LP1082 Pré-qualif LP" "psa" "probayes"))
-  (defun my/set-pointage ()
-    (let ((p (completing-read "pointage: " pointage))))
-    )
-  (defun my/org-inbox-pointage ()
-    (interactive)
-    (let ((l (org-ql-select
-               my/org-inbox-file
-               '(and (tags "2022geoptis")
-                     (clocked)
-                     (not (property "POINTAGE"))))))
-      (setq e (car l))
-      )
-    )
-  )
-;; (point (plist-get (plist-get e 'headline) `:begin))
 
 (defun my/org-refile-to-datetree (file &optional d)
   (let ((d (or d (calendar-current-date)))
@@ -252,14 +233,6 @@ shell exits, the buffer is killed."
   (org-super-agenda-mode)
   )
 
-(defun my/ql-from-tag (tag)
-    (cond
-     ((string-match "psa" tag) '(and (tags "psa" "p@2021psa")))
-     ((string-match "productivity" tag) '(and (tags "productivity")))
-     ((string-match "boulange" tag) '(and (tags "boulange")))
-     (t '(and))
-     )
-  )
 
 (defun my/org-roam-files-from-tag (tag)
   (--map (car it) (org-roam-db-query
@@ -301,14 +274,6 @@ shell exits, the buffer is killed."
                                    ))
         )
     (org-tags-view)))
-
-(setq my/org-work-tags '("poma" "geoptis" "probayes" "psa"))
-
-(defun my/org-at-work-p ()
-  (let ((tags (org-get-tags)))
-    (> (-reduce '+  (--map (s-count-matches (car it) (cdr it))
-                           (-table-flat 'cons my/org-work-tags tags)))
-       0)))
 
 ;; from https://emacs.stackexchange.com/questions/14025/how-to-get-todays-total-logged-time-programatically
 (defun my/org-clock-sum-today (&optional HEADLINE-FILTER)
@@ -591,8 +556,7 @@ clocked tasks in minutes."
         mail-specify-envelope-from t
         message-sendmail-envelope-from 'header
         mail-envelope-from 'header
-        notmuch-fcc-dirs '(("kevin.caye@probayes.com" . "probayes/Sent")
-                           ("kevin@caye.fr" . "caye/Sent")
+        notmuch-fcc-dirs '(("kevin@caye.fr" . "caye/Sent")
                            (".*" . "Sent"))
         notmuch-message-headers-visible t
         +notmuch-home-function (lambda () (notmuch-search "tag:inbox"))
