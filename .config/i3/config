@@ -210,9 +210,10 @@ for_window [class="vlc"] floating enable
 # lock screen
 bindsym $mod+Shift+x exec "i3lock"
 
-# capture with shutter
-Bindsym $mod+p Exec ~/.local/bin/takescreenshot
 
+## Clipboard Screenshots
+bindsym $mod+p exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym $mod+Shift+p exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # capture to clock
 Bindsym $mod+k Exec ck
