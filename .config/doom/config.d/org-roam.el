@@ -45,8 +45,28 @@
         (upcase "node")
         )
       ))
+  (cl-defmethod org-roam-node-year ((node org-roam-node))
+    "Return the TYPE of NODE."
+    (let ((cat (cdr (assoc "YEAR"  (org-roam-node-properties node)))))
+      (if cat
+          (upcase cat)
+        (upcase "node")
+        )
+      ))
   (setq org-roam-node-display-template
         (concat "${title:*} " (propertize "${tags:30}" 'face 'org-tag)))
 
   )
 
+(defun my/org-roam-ref-find ()
+  (interactive)
+  (let* ((org-roam-node-display-template
+          (concat "[${year:10}] ${title:*} " (propertize "${tags:30}" 'face 'org-tag)))
+         (filter-fn (lambda (node) (equal "REFS" (org-roam-node-type node))))
+         )
+    (org-roam-node-find nil nil filter-fn)
+    )
+  )
+(map! :leader
+      :desc "my/org-roam-ref-find"     "n r F"    #'my/org-roam-ref-find
+      )

@@ -5,6 +5,10 @@
 - https://askubuntu.com/questions/496549/error-you-must-put-some-source-uris-in-your-sources-list
 - https://github.com/plexus/chemacs2
 ** Install 
+:LOGBOOK:
+- Note taken on [2023-03-07 mar. 14:59] \\
+  in progress
+:END:
 git clone --depth 1 --branch emacs-28.2 https://git.savannah.gnu.org/git/emacs.git
 # software-properties-gtk 
 # sudo apt update
