@@ -1,3 +1,7 @@
+* emacs 
+** links
+- https://www.linuxfromscratch.org/blfs/view/svn/postlfs/emacs.html
+- https://practical.li/blog/posts/build-emacs-28-on-ubuntu/
 * doom emacs
 * fd and rg
 ** install
