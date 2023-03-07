@@ -1,3 +1,19 @@
+* emacs 
+** links
+- https://www.linuxfromscratch.org/blfs/view/svn/postlfs/emacs.html
+- https://practical.li/blog/posts/build-emacs-28-on-ubuntu/
+- https://askubuntu.com/questions/496549/error-you-must-put-some-source-uris-in-your-sources-list
+- https://github.com/plexus/chemacs2
+** Install 
+git clone --depth 1 --branch emacs-28.2 https://git.savannah.gnu.org/git/emacs.git
+# software-properties-gtk 
+# sudo apt update
+sudo apt build-dep emacs
+sudo apt install gcc-10
+sudo apt install libgccjit0 libgccjit-10-dev libjansson4 libjansson-dev gnutls-bin
+export CC=/usr/bin/gcc-10  && export CXX=/usr/bin/gcc-10 
+./autogen.sh
+./configure --with-native-compilation
 * doom emacs
 * fd and rg
 ** install
