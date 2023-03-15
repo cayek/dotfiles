@@ -25,3 +25,5 @@
 ;;    :files ("*.el")))
 
 (package! ox-gfm)
+
+(package! eaf :recipe (:host github :repo "emacs-eaf/emacs-application-framework"))
