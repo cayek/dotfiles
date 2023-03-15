@@ -9,15 +9,22 @@
 - Note taken on [2023-03-07 mar. 14:59] \\
   in progress
 :END:
+#+begin_src sh
+cd src
 git clone --depth 1 --branch emacs-28.2 https://git.savannah.gnu.org/git/emacs.git
-# software-properties-gtk 
+# software-properties-gtk
 # sudo apt update
 sudo apt build-dep emacs
 sudo apt install gcc-10
 sudo apt install libgccjit0 libgccjit-10-dev libjansson4 libjansson-dev gnutls-bin
-export CC=/usr/bin/gcc-10  && export CXX=/usr/bin/gcc-10 
+export CC=/usr/bin/gcc-10  && export CXX=/usr/bin/gcc-10
 ./autogen.sh
 ./configure --with-native-compilation
+make -j4
+export EMACS=~/src/emacs/src/emacs
+doom build
+
+#+end_src
 * doom emacs
 * fd and rg
 ** install
