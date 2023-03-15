@@ -107,8 +107,8 @@ shell exits, the buffer is killed."
   ;; may set the path to the tmux binary as follows:
   (org-babel-tmux-location "/usr/bin/tmux"))
 
-(set-popup-rules!
-  `(("^\\*sh-" :size 0.3 :ttl 0)))
+;; (set-popup-rules!
+;;   `(("^\\*sh-" :size 0.3 :ttl 0)))
 
 ;; (use-package! detached
 ;;   :hook (after-init . detached-setup)

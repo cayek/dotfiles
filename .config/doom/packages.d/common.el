@@ -12,6 +12,10 @@
   (:host github
    :repo "alphapapa/org-protocol-capture-html"
    :files ("*.el")))
+(package! bufler :recipe
+  (:host github
+   :repo "alphapapa/bufler.el"
+   :files (:defaults (:exclude "helm-bufler.el"))))
 (package! org-super-agenda)
 (package! org-ql)
 (package! org-web-tools)
