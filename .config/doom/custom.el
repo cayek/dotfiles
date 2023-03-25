@@ -5,7 +5,11 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages '(emacsql-sqlite emacsql))
  '(safe-local-variable-values
-   '((elisp-lint-indent-specs
+   '((eval add-hook 'after-save-hook
+      (lambda nil
+        (org-gfm-export-to-markdown))
+      nil t)
+     (elisp-lint-indent-specs
       (describe . 1)
       (it . 1)
       (thread-first . 0)
